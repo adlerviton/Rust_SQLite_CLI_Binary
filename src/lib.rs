@@ -38,7 +38,6 @@ pub fn fill_data() -> Result<(), Box<dyn Error>> {
         let close = &record[4];
         let adj_close = &record[5];
         let volume = &record[6];
-        
 
         if let Err(err) = conn.execute(
             "INSERT INTO SPX_info (date, open, high, low, close, adj_close, volume) values (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
