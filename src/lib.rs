@@ -28,8 +28,16 @@ pub fn fill_data() -> Result<(), Box<dyn Error>> {
         .has_headers(true)
         .from_path("../SPX.csv")?;
 
-    while let Some(result) = reader.records().next() {
-        let record = result?;
+    for result in reader.records() {
+        let record = match result {
+            Ok(r) => r,
+            Err(err) => {
+                eprintln!("Error reading CSV record: {}", err);
+                continue;
+            }
+        };
+
+        println!("Record: {:?}", record);
 
         let date = &record[0];
         let open = &record[1];
@@ -40,7 +48,7 @@ pub fn fill_data() -> Result<(), Box<dyn Error>> {
         let volume = &record[6];
 
         if let Err(err) = conn.execute(
-            "INSERT INTO SPX_info (date, open, high, low, close, adj_close, volume) values (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
+            "INSERT INTO SPX_info (date, open, high, low, close, adj_close, volume) VALUES (?1, ?2, ?3, ?4, ?5, ?6, ?7)",
             &[&date, &open, &high, &low, &close, &adj_close, &volume],
         ) {
             eprintln!("Error inserting row: {}", err);

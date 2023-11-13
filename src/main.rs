@@ -21,9 +21,12 @@ fn main() {
 
     let now = Instant::now();
     {
-        let _ = create_db();
-        let _ = fill_data();
-        let _ = use_query(query);
+        let _ = create_db().map_err(|e| format!("Error creating database: {}", e));
+        println!("Database created successfully");
+        let _ = fill_data().map_err(|e| format!("Error filling data: {}", e));
+        println!("Data filled successfully");
+        let _ = use_query(query).map_err(|e| format!("Error executing query: {}", e));
+        println!("Query executed successfully");
     }
 
     let elapsed = now.elapsed();
