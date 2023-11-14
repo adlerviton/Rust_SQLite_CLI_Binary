@@ -23,10 +23,14 @@ pub fn create_db() -> Result<()> {
 
 pub fn fill_data() -> Result<(), Box<dyn Error>> {
     let conn = Connection::open("SPX_Data.db")?;
-
-    let mut reader = ReaderBuilder::new()
-        .has_headers(true)
-        .from_path("../SPX.csv")?;
+    println!("Connected");
+    let mut reader = match ReaderBuilder::new().has_headers(true).from_path("SPX.csv") {
+        Ok(reader) => reader,
+        Err(err) => {
+            eprintln!("Error opening file: {}", err);
+            return Err(err.into());
+        }
+    };
 
     for result in reader.records() {
         let record = match result {
