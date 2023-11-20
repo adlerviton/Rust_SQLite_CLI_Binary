@@ -41,8 +41,6 @@ pub fn fill_data() -> Result<(), Box<dyn Error>> {
             }
         };
 
-        println!("Record: {:?}", record);
-
         let date = &record[0];
         let open = &record[1];
         let high = &record[2];
