@@ -68,3 +68,7 @@ I also created a release executable rust binary called sql runner. This optimize
 
 ![image](https://github.com/adlerviton/Rust_SQLite_CLI_Binary/blob/main/Images_Rust_Sqlitee/Make_binary.png)
 
+## Demo Video:
+
+https://youtu.be/zjh7wWrc2E0
+
