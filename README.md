@@ -1,4 +1,4 @@
-# Individual Project #2: Rust CLI Binary with SQLite
+# Rust CLI Binary with SQLite
 Rust CLI Binary that Connects to SQLite Database
 [![Build binary release](https://github.com/adlerviton/Rust_SQLite_CLI_Binary/actions/workflows/release.yml/badge.svg)](https://github.com/adlerviton/Rust_SQLite_CLI_Binary/actions/workflows/release.yml)
 [![Build](https://github.com/adlerviton/Rust_SQLite_CLI_Binary/actions/workflows/Build.yml/badge.svg)](https://github.com/adlerviton/Rust_SQLite_CLI_Binary/actions/workflows/Build.yml)
